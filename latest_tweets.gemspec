@@ -6,7 +6,7 @@ require 'latest_tweets/version'
 Gem::Specification.new do |spec|
   spec.name          = "latest_tweets"
   spec.version       = LatestTweets::VERSION
-  spec.authors       = ["Jamie Allen"]
+  spec.authors       = ["Jamie Allen", "Sean Roberts", "Devlin Zed"]
   spec.email         = ["jamie@factore.ca"]
   spec.summary       = %q{Simple twitter gem wrapper for grabbing the latest tweets from an account or query.}
   spec.description   = %q{Simple twitter gem wrapper for grabbing the latest tweets from an account or query.}
