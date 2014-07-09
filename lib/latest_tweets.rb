@@ -4,8 +4,8 @@ require 'latest_tweets/twitter_setup'
 require 'latest_tweets/twitter_timeline'
 
 module LatestTweets
-  def self.from_account(account, count = 3)
-    LatestTweets::TwitterTimeline.new({account: account, count: count}).tweets
+  def self.from_account(account, count = 3, options = {})
+    LatestTweets::TwitterTimeline.new({account: account, count: count}.merge(options)).tweets
   end
 
   def self.from_query(query, count = 3)

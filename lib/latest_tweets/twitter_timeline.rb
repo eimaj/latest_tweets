@@ -12,7 +12,7 @@ module LatestTweets
 
     def tweets
       if options[:account]
-        client.user_timeline(options[:account], count: options[:count])
+        client.user_timeline(options[:account], count: options[:count], exclude_replies: options[:exclude_replies])
       elsif options[:query]
         client.search(options[:query], count: options[:count]).to_a
       end
@@ -20,7 +20,7 @@ module LatestTweets
 
     private
       def default_options
-        {count: 3}
+        { count: 3, exclude_replies: false }
       end
 
       def config_twitter

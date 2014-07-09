@@ -31,6 +31,21 @@ describe LatestTweets::TwitterTimeline do
         end
       end
     end
+
+    context 'when told to exclude replies' do
+      let(:twitter_timeline) { LatestTweets::TwitterTimeline.new(account: '#HamOnt', count: 1, exclude_replies: true) }
+
+      context '#tweets' do
+        it 'passes that option along' do
+          allow(twitter_timeline).to receive(:client) { twitter_client }
+          allow(twitter_client).to receive(:search) do |query, params|
+            expect(params[:exclude_replies]).to eq(true)
+            [ ]
+          end
+          twitter_timeline.tweets
+        end
+      end
+    end
   end
 
   context 'when provided a query' do

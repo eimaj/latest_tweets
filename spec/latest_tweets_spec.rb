@@ -20,6 +20,14 @@ describe LatestTweets do
       LatestTweets.from_account('eimaj', 1)
     end
 
+    it 'passes the exclude_replies option, if provided, to LatestTweets::TwitterTimeline' do
+      allow(LatestTweets::TwitterTimeline).to receive(:new) do |params|
+        expect(params[:exclude_replies]).to eq(true)
+        twitter_timeline
+      end
+      LatestTweets.from_account('eimaj', 1, exclude_replies: true)
+    end
+
     it 'grabs the tweets' do
       allow(LatestTweets::TwitterTimeline).to receive(:new) { twitter_timeline }
       expect(twitter_timeline).to receive(:tweets)
